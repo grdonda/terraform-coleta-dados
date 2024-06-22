@@ -1,6 +1,9 @@
 # Coleta de dados via Kinesis
 
+objetivo é coletar dados via Kinesis e armazenar no S3
+
 ## infraestrutura
+
 - Kinesis data stream
 - Kinesis data firehose
 - S3
@@ -8,12 +11,15 @@
 - Athena
 
 ## PutRecord
+
 Envio de objeto base64 encoded
 
 ## PutRecords
+
 Envio de uma lista de objetos
 
 ## Collections
+
 ```
 curl --location 'https://kinesis.us-east-1.amazonaws.com' \
 --header 'Content-Type: application/x-amz-json-1.1' \
@@ -50,4 +56,9 @@ curl --location 'https://kinesis.us-east-1.amazonaws.com/' \
 }'
 ```
 
+## planejamento
+
+```
+    kinesis data stream -> kinesis data firehose -> s3 -> glue -> athena
+```
 
