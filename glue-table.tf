@@ -17,6 +17,10 @@ resource "aws_glue_catalog_table" "glue_table_mensuracao" {
 
     ser_de_info {
       serialization_library = "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe"
+
+      parameters = {
+        "serialization.format" = "1"
+      }
     }
 
     columns {
@@ -30,18 +34,21 @@ resource "aws_glue_catalog_table" "glue_table_mensuracao" {
     }
   }
 
+  # as partições são numericas, datas, por questão de performance devem ser INT
   partition_keys {
     name = "year"
     type = "int"
   }
-
   partition_keys {
     name = "month"
     type = "int"
   }
-
   partition_keys {
     name = "day"
+    type = "int"
+  }
+  partition_keys {
+    name = "hour"
     type = "int"
   }
 

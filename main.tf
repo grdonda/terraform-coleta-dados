@@ -1,2 +1,2 @@
-// aqui iniciamos as configurações customizadas
+// main
 
